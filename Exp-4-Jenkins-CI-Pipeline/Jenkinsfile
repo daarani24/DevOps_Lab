@@ -5,13 +5,17 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn clean compile'
+                dir('Exp-4-Jenkins-CI-Pipeline') {
+                    sh 'mvn clean compile'
+                }
             }
         }
 
         stage('Test') {
             steps {
-                sh 'mvn test'
+                dir('Exp-4-Jenkins-CI-Pipeline') {
+                    sh 'mvn test'
+                }
             }
         }
 
@@ -21,6 +25,7 @@ pipeline {
         success {
             echo 'CI Pipeline Executed Successfully!'
         }
+
         failure {
             echo 'CI Pipeline Failed!'
         }
